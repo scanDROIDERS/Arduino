@@ -3,8 +3,8 @@
 
 const int led = 2;
 
-char *ssid = "iPhone";
-char *senha = "bartira02";
+char *ssid = "tomh"; //iPhone //tomh //CLARO_2G6469F3
+char *senha = "44556677"; //bartira02 //44556677 // C96469F3
 
 WiFiServer server(80); // Define o servidor na porta 80
 
@@ -84,7 +84,7 @@ void loop() {
               String paramName = keyValue[0];
               String paramValue = keyValue[1];
               
-              String s = "temp";
+              String s = "temp_max";
               if (paramName == s) {
                 TEMPERATURA = atof(paramValue.c_str());
                 Serial.println("Temp: " + (String) TEMPERATURA);
@@ -100,25 +100,7 @@ void loop() {
         client.println("HTTP/1.1 200 OK");
         client.println("Content-Type: text/html");
         client.println("");
-        client.println("<html><body>");
-        client.println("<style>");
-        client.println("body {");
-        client.println("    background-color: dodgerblue;");
-        client.println("}");
-        client.println("</style>");
-        client.println("<h1>Formulário de Exemplo</h1>");
-        client.println("<form method='GET' action='http://172.20.10.8/'>");
-        client.println("<label for='nome'>Temp:</label>");
-        client.println("<input type='number' id='nome' name='temp' required><br>");
-        client.println("<label for='nome'>pH:</label>");
-        client.println("<input type='number' id='nome' name='pH' required><br>");
-        client.println("<label for='nome'>OXP:</label>");
-        client.println("<input type='number' id='nome' name='OXP' required><br>");
-        client.println("<p>" + (String) TEMPERATURA  + "</p>");
-        client.println("<iframe src='https://thingspeak.com/channels/1466041/charts/3?bgcolor=%23ffffff&color=%23d62020&days=30&dynamic=true&title=Temperatura&type=line'></iframe>");
-        client.println("<input type='submit' value='Enviar'>");
-        client.println("</form>");
-        client.println("</body></html>");
+        client.println("<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Projeto Piscicultura</title></head><style>body{font-family:Arial,sans-serif;background-color:#f4f4f4;padding:20px;}h1{text-align:center;margin-bottom:30px;}form{max-width:500px;margin:0 auto;background-color:#ffffff;border-radius:5px;padding:30px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}label{display:block;margin-bottom:10px;font-weight:bold;}input[type='text']{width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;box-sizing:border-box;margin-bottom:10px;}input[type='submit']{background-color:#14b8a6;color:#ffffff;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;font-size:16px;}input[type='submit']:hover{background-color:#45a049;}.category{margin-bottom:20px;}@media only screen and (max-width:600px){form{padding:20px;}}</style><body><h1>Projeto Piscicultura</h1><form method='GET' action='"+ WiFi.localIP().toString() +"'><div class='category'><label for='ph'>pH:</label><input type='text' id='ph_min' name='ph_min' placeholder='Mínimo' step='0.01' required><input type='text' id='ph_max' name='ph_max' placeholder='Máximo' step='0.01' required></div><label for='salinidade'>Salinidade:</label><input type='text' id='salinidade_min' name='salinidade_min' placeholder='Mínimo' step='0.01' required><input type='text' id='salinidade_max' name='salinidade_max' placeholder='Máximo' step='0.01' required></div><div class='category'><label for='o2'>O2:</label><input type='text' id='o2_min' name='o2_min' placeholder='Mínimo' step='0.01' required><input type='text' id='o2_max' name='o2_max' placeholder='Máximo' step='0.01' required></div><div class='category'><label for='cond'>Condutividade (%):</label><input type='text' id='cond_min' name='cond_min' placeholder='Mínimo' step='0.01' required><input type='text' id='cond_max' name='cond_max' placeholder='Máximo' step='0.01' required></div><div class='category'><label for='temp'>Temperatura:</label><input type='text' id='temp_min' name='temp_min' placeholder='Mínimo' step='0.01' required><input type='text' id='temp_max' name='temp_max' placeholder='Máximo' step='0.01' required></div><div class='category'><label for='oxi'>Oxigênio:</label><input type='text' id='oxi_min' name='oxi_min' placeholder='Mínimo' step='0.01' required><input type='text' id='oxi_max' name='oxi_max' placeholder='Máximo' step='0.01' required></div><input type='submit' value='Enviar'></form></body></html>");
         break;
       }
     }
