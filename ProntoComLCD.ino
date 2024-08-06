@@ -200,8 +200,8 @@ void reconnect_wifi()
   lcd.print("CONECTANDO");
   delay(500);
 
-  //WiFi.begin("malab", "bartira02");
-  WiFi.begin(ssid, pass);
+  WiFi.begin("malab", "bartira02");
+  //WiFi.begin(ssid, pass);
   Serial.println("connecting to wifi");
   delay(500);
 
@@ -215,6 +215,11 @@ void reconnect_wifi()
     lcd.print("Wifi Conectando:");
     lcd.setCursor(0, 1);
     lcd.print(tentativa);
+
+    //teste
+    lcd.clear();
+    lcd.setCursor(0, 1);
+    lcd.print(ssid);
     delay(1000);
   }
   if (tentativa > 14)
@@ -1082,10 +1087,9 @@ void readFromThingspeak() {
 
       std::vector<String> jR = splitString(r, '\"');
       String fl = jR[11];
-      b = fl;
+      //b = fl;
+      modomanual = atof(fl.c_str());
     }
-
-    modomanual = atof(b);
 
   if (modomanual == 0) {
   
@@ -1106,7 +1110,7 @@ void readFromThingspeak() {
       while (!client.available()) {
         delay(100);
       }
-
+  
       String response = client.readString();
 
       std::vector<String> jsonResponse = splitString(response, '\"');
@@ -1215,6 +1219,9 @@ void readFromThingspeak() {
   }
 
   if (modomanual == 1) {
+
+    lcd.print("Manual Reles");
+    
     for (int i = 1; i <= 6; i++) {
     delay(5000);
     String url = urlGetThingspeak("2541128", (String)i, "E185Q2WVALLPEVNH");
