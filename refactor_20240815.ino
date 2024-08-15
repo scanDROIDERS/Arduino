@@ -546,35 +546,35 @@ void loop()
         {
         case 1:
             temp_max = atof(field.c_str());
-            Serial.println("temp-mx" + temp_max);
+            Serial.println(temp_max);
             break;
         case 2:
             temp_min = atof(field.c_str());
-            Serial.println("temp-mn" + temp_min);
+            Serial.println(temp_min);
             break;
         case 3:
             ph_max = atof(field.c_str());
-            Serial.println("ph-mx" + ph_max);
+            Serial.println(ph_max);
             break;
         case 4:
             ph_min = atof(field.c_str());
-            Serial.println("ph-mn" + ph_min);
+            Serial.println(ph_min);
             break;
         case 5:
             do_max = atof(field.c_str());
-            Serial.println("do-mx" + do_max);
+            Serial.println(do_max);
             break;
         case 6:
             do_min = atof(field.c_str());
-            Serial.println("do-mn" + do_min);
+            Serial.println(do_min);
             break;
         case 7:
             orp_max = atof(field.c_str());
-            Serial.println("sal-mx" + orp_max);
+            Serial.println(orp_max);
             break;
         case 8:
             orp_min = atof(field.c_str());
-            Serial.println("sal-mn" + orp_min);
+            Serial.println(orp_min);
             break;
         default:
             break;
@@ -611,19 +611,19 @@ void loop()
         {
         case 1:
             cond_max = atof(field.c_str());
-            Serial.println("cond-mx" + temp_max);
+            Serial.println(temp_max);
             break;
         case 2:
             cond_min = atof(field.c_str());
-            Serial.println("cond-mn" + temp_min);
+            Serial.println(temp_min);
             break;
         case 3:
             sal_max = atof(field.c_str());
-            Serial.println("sal-mx" + ph_max);
+            Serial.println(ph_max);
             break;
         case 4:
             sal_min = atof(field.c_str());
-            Serial.println("sal-mn" + ph_min);
+            Serial.println(ph_min);
             break;
         default:
             break;
